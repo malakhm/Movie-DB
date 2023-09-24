@@ -8,3 +8,17 @@ app.get("/", (request, response) => {
 app.listen(3000, () => {
     console.log("Listen on the port 3000...");
 });
+
+app.get("/test", (request, response) => {
+    response.send(" {status:200, message:'ok'}");
+});
+
+
+
+
+var time = new Date().getHours()  + ":" + new Date().getMinutes()
+
+console.log(time)
+app.get("/time", (request, response) => {
+    response.send(" {status:200, message:"+ time+ "}");
+});
