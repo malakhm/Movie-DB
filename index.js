@@ -22,3 +22,8 @@ console.log(time)
 app.get("/time", (request, response) => {
     response.send(" {status:200, message:"+ time+ "}");
 });
+
+app.get('/hello/:ID', (request, response) => {
+    const ID = request.params.ID;
+    response.send(" {status:200, message: hello "+ ID+ "}");
+});
