@@ -1,5 +1,23 @@
 const express = require("express");
 const app = express();
+const movies = [
+    { title: 'Jaws', year: 1975, rating: 8 },
+    { title: 'Avatar', year: 2009, rating: 7.8 },
+    { title: 'Brazil', year: 1985, rating: 8 },
+    { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
+]
+
+// function that iterates through the movies object , extract movies title and concatenates it to the list variable
+const listAllMovies = (movies) => 
+{
+    let list=''
+    for (let i = 0; i < movies.length; i++)
+    {
+        list += movies[i].title + " , "
+    }
+    return list
+}
+
 
 app.get("/", (request, response) => {
     response.send("ok");
@@ -47,3 +65,22 @@ app.get('/search', (req, res) => {
   else{res.send(" {status:500,error:true, message:'you have to provide a search'}")}
 });
 
+
+app.get("/movies/create", (request, response) => {
+    response.send(" {status:200, message:'ok'}");
+});
+
+
+app.get("/movies/read", (request, response) => {
+    response.send(" {status:200, data:"+listAllMovies(movies) +"}");
+});
+
+
+app.get("/movies/update", (request, response) => {
+    response.send(" {status:200, message:'ok'}");
+});
+
+
+app.get("movies/delete", (request, response) => {
+    response.send(" {status:200, message:'ok'}");
+});
